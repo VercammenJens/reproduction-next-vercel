@@ -11,6 +11,8 @@ type Props = {
 const MovePage: FC<Props> = ({ questions }) => {
   const { t } = useTranslation('move')
 
+  console.log('T_QUESTIONS:', questions)
+
   return (
     <>
       <Head>
@@ -33,7 +35,7 @@ const MovePage: FC<Props> = ({ questions }) => {
   )
 }
 
-export const getStaticProps = async ({ locale }: any) => {
+export const getStaticProps = async ({ locale, ...rest }) => {
   let apiTestData = []
   try {
     const { data } = await axios.get('https://official-joke-api.appspot.com/jokes/programming/ten')
@@ -41,6 +43,10 @@ export const getStaticProps = async ({ locale }: any) => {
   } catch (err) {
     apiTestData = []
   }
+
+  console.log('T_LOCALE:', locale)
+  console.log('T_REST:', rest)
+  console.log('T_TEST_DATA:', apiTestData)
 
   return {
     props: {

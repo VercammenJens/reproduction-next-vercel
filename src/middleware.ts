@@ -14,6 +14,8 @@ export async function middleware(req: NextRequest) {
     return
   }
 
+  console.log('REQ', req.nextUrl)
+
   if (req.nextUrl.locale === 'default') {
     const locale = req.cookies.get('NEXT_LOCALE')?.value || 'nl'
 
