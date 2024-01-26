@@ -5,17 +5,19 @@ module.exports = {
   i18n,
   reactStrictMode: true,
   rewrites: async () => {
-    return [
-      {
-        source: '/nl/verhuizen',
-        destination: '/nl/move',
-        locale: false
-      },
-      {
-        source: '/fr/deplacer',
-        destination: '/fr/move',
-        locale: false
-      }
-    ]
+    return {
+      beforeFiles: [
+        {
+          source: '/nl/verhuizen',
+          destination: '/nl/move',
+          locale: false
+        },
+        {
+          source: '/fr/deplacer',
+          destination: '/fr/move',
+          locale: false
+        }
+      ]
+    }
   }
 }
