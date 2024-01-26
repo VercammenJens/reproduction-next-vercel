@@ -12,9 +12,6 @@ type Props = {
 const DynamicMovePage: FC<Props> = ({ questions, slug }) => {
   const { t } = useTranslation('move')
 
-  console.log('T_SLUG:', slug)
-  console.log('T_QUESTIONS:', questions)
-
   return (
     <>
       <Head>

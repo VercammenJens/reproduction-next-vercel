@@ -15,8 +15,6 @@ const MovePage: FC<Props> = ({ questions }) => {
   const { t } = useTranslation('move')
   const { locale } = useRouter()
 
-  console.log('T_QUESTIONS:', questions)
-
   return (
     <>
       <Head>
