@@ -3,6 +3,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
 import axios from 'axios'
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import { routes } from "@/utils/routes";
+import { useRouter } from "next/router";
 
 type Props = {
   questions: any[]
@@ -10,6 +13,7 @@ type Props = {
 
 const MovePage: FC<Props> = ({ questions }) => {
   const { t } = useTranslation('move')
+  const { locale } = useRouter()
 
   console.log('T_QUESTIONS:', questions)
 
@@ -22,6 +26,14 @@ const MovePage: FC<Props> = ({ questions }) => {
         <link rel="icon" href="/favicon.ico"/>
       </Head>
       <h1 style={{ marginBottom: '2rem' }}>{t('title')}</h1>
+
+      <ul>
+        <li>
+          <Link href={`${routes(locale).move}/test-1`}>{t('test-1')}</Link>
+          <Link href={`${routes(locale).move}/test-2`}>{t('test-2')}</Link>
+          <Link href={`${routes(locale).move}/test-3`}>{t('test-3')}</Link>
+        </li>
+      </ul>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {questions.map((q) =>
@@ -43,10 +55,6 @@ export const getStaticProps = async ({ locale, ...rest }) => {
   } catch (err) {
     apiTestData = []
   }
-
-  console.log('T_LOCALE:', locale)
-  console.log('T_REST:', rest)
-  console.log('T_TEST_DATA:', apiTestData)
 
   return {
     props: {

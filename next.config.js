@@ -6,7 +6,7 @@ module.exports = {
   reactStrictMode: true,
   rewrites: async () => {
     return {
-      afterFiles: [
+      beforeFiles: [
         {
           source: '/nl/verhuizen',
           destination: '/nl/move',
@@ -15,6 +15,16 @@ module.exports = {
         {
           source: '/fr/deplacer',
           destination: '/fr/move',
+          locale: false
+        },
+        {
+          source: '/nl/verhuizen/:slug',
+          destination: '/nl/move/:slug',
+          locale: false
+        },
+        {
+          source: '/fr/deplacer/:slug',
+          destination: '/fr/move/:slug',
           locale: false
         }
       ]
